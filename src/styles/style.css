@@ -5,11 +5,9 @@ body {
 button{
   border: none;
   margin: 3px;
-  border-color: #7c7c7c;
 }
 
 .legenda{
-  position:absolute;
   top: 100px;
   z-index: 400;
 }

@@ -74,21 +74,21 @@ const Map = () => {
         <>
             <MapContainer center={[37.5, 14.1]} zoom={8} scrollWheelZoom={false} style={mapStyle}>
                 <TileLayer attribution="Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL." url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"/>
-                {feature && (<GeoJSON data={feature} onEachFeature={onEachFeature} style={style} />)}
+                {feature && <GeoJSON data={feature} onEachFeature={onEachFeature} style={style} />}
             </MapContainer>
-            <div style={{width:'100%',marginTop:'50px'}}>
+            <div className="w-100 mt-3">
                 {onselect.comune && (
-                    <ul className="legenda">
-                    <li><strong>{onselect.comune}</strong></li><br/>
+                    <ul className="position-absolute legenda">
+                    <li><strong>{onselect.comune}</strong></li>
                     </ul>
                 )}
-                <h3 style={{textAlign:'center'}}>{features.day.data}</h3>
+                <h3 className="text-center">{features.day.data}</h3>
                 <Slider min={0} max={features.data.length} defaultValue={index} value={index} onChange={(e) => setIndex(e)} />
                 <div className="text-center m-3">
                     <button onClick={() => {setPlay(false); setIndex(0); setSpeed(100)}}>
                         <span>⏹</span>
                     </button>
-                    <button style={{margin:'0 auto'}} onClick={() => setPlay(!isPlaying)}>
+                    <button onClick={() => setPlay(!isPlaying)}>
                         {isPlaying ? <span>⏸</span> : <span>▶</span>}
                     </button>
                     <button onClick={() => setSpeed(speed/2)}>

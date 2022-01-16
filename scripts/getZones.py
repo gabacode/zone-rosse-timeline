@@ -2,6 +2,7 @@ import pandas as pd
 import json
 from copy import deepcopy
 
+print('Caricamento dati...')
 df = pd.read_csv('https://raw.githubusercontent.com/opendatasicilia/ordinanze-covid/main/data.csv')
 df = df[['pro_com','zona','data_inizio','data_fine']]
 
@@ -17,6 +18,7 @@ for date in dates:
 total = []
 output = []
 
+print('Genero nuovo dizionario...')
 for i, date in enumerate(date_list):
     entry = dict({"data": date, "rossa": (total[i-1]['rossa'] if len(total) > 0 else []), "arancione": (total[i-1]['arancione'] if len(total) > 0 else [])})
 
@@ -42,6 +44,9 @@ for i, date in enumerate(date_list):
 
     total.append(entry)
     output.append(deepcopy(entry))
-    
-with open('../src/data/zones.json', 'w') as f:
+
+print('Salvo file json...')
+with open('./src/data/zones.json', 'w') as f:
     json.dump(output , f)
+
+print('Fatto.')
