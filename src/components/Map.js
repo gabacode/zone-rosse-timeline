@@ -15,13 +15,13 @@ const Map = () => {
     const features = Zones(index);
 
     useEffect(() => {
-        if(isPlaying && index < features.data.length){
+        if(isPlaying && index < features.days){
             const interval = setInterval(() => {
                 setIndex(index + 1);
             }, speed);
             return () => clearInterval(interval);
         }
-    }, [features.data.length, isPlaying, index, speed]);
+    }, [features.days, isPlaying, index, speed]);
 
     const highlightFeature = (e => {
         const layer = e.target;
@@ -83,13 +83,13 @@ const Map = () => {
                     </ul>
                 )}
                 <h3 className="text-center">{features.day.data}</h3>
-                <Slider min={0} max={features.data.length} defaultValue={index} value={index} onChange={(e) => setIndex(e)} />
+                <Slider min={0} max={features.days} defaultValue={index} value={index} onChange={(e) => setIndex(e)} />
                 <div className="text-center m-3">
                     <button onClick={() => {setPlay(false); setIndex(0); setSpeed(100)}}>
                         <span>⏹</span>
                     </button>
                     <button onClick={() => setPlay(!isPlaying)}>
-                        {isPlaying ? <span>⏸</span> : <span>▶</span>}
+                        {isPlaying ? <span>⏸</span> : <span>▶️</span>}
                     </button>
                     <button onClick={() => setSpeed(speed/2)}>
                         <span>⏩</span>

@@ -14,5 +14,5 @@ export default function Zones(date){
         features.filter(x => timeframe.arancione.includes(x.properties.PRO_COM)).map(x => x.properties.IS_ORANGE = true);
     }
     
-    return {data: features, day: timeSeries[date]};
+    return {data: features, day: timeSeries[date], days: timeSeries.length - 1};
 }
