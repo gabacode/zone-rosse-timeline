@@ -1,6 +1,7 @@
 {
   "name": "zone-rosse-timeline",
   "version": "0.1.0",
+  "homepage": "https://gabacode.github.io/zone-rosse-timeline/",
   "author": "Gabriele Scalici <gaba@totel.it>",
   "private": true,
   "dependencies": {
