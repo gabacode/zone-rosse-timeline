@@ -1,0 +1,42 @@
+name: Update
+
+on:
+  schedule:
+    - cron: '10 12 * * 2,5'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+        
+      - name: Get CSV hash
+        id: get-hash
+        run:
+          echo "::set-output name=remote::$(curl -sL https://raw.githubusercontent.com/opendatasicilia/ordinanze-covid/main/data.csv | sha1sum | cut -f 1 -d " ")"
+        shell: bash
+        
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: ~/.cache
+          key: ${{ runner.os }}-${{ steps.get-hash.outputs.remote }}
+
+      - name: Execute Script
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          echo "Sembra che il file sia stato aggiornato."
+          pip install pandas
+          python ./scripts/getZones.py
+          
+      - name: Update Repository
+        run: |-
+          git config user.name "autoupdate"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          timestamp=$(date --iso-8601=seconds)
+          git commit -m "update: ${timestamp}" || exit 0
+          git push
