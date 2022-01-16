@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/zone-rosse-timeline/static/css/main.e19b59bd.css",
-    "main.js": "/zone-rosse-timeline/static/js/main.e9a55660.js",
+    "main.js": "/zone-rosse-timeline/static/js/main.28acdc23.js",
     "index.html": "/zone-rosse-timeline/index.html",
     "main.e19b59bd.css.map": "/zone-rosse-timeline/static/css/main.e19b59bd.css.map",
-    "main.e9a55660.js.map": "/zone-rosse-timeline/static/js/main.e9a55660.js.map"
+    "main.28acdc23.js.map": "/zone-rosse-timeline/static/js/main.28acdc23.js.map"
   },
   "entrypoints": [
     "static/css/main.e19b59bd.css",
-    "static/js/main.e9a55660.js"
+    "static/js/main.28acdc23.js"
   ]
 }
