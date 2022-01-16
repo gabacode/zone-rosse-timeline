@@ -34,6 +34,12 @@ for i, date in enumerate(date_list):
             elif row['zona'] == 'arancione':
                 entry['arancione'].remove(row['pro_com'])
 
+        if row['data_inizio'] == row['data_fine'] == date:
+            if row['zona'] == 'rossa':
+                entry['rossa'].remove(row['pro_com'])
+            elif row['zona'] == 'arancione':
+                entry['arancione'].remove(row['pro_com'])
+
     total.append(entry)
     output.append(deepcopy(entry))
     
